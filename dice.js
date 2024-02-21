@@ -6,7 +6,7 @@ function rand(){
 }
 
 
-/*d1 =rand();
+d1 =rand();
 d2 =rand();
 d3 =rand();
 d4 =rand();
@@ -15,4 +15,4 @@ document.getElementById('dice1').textContent = d1;
 document.getElementById('dice2').textContent = d2;
 document.getElementById('dice3').textContent = d3;
 document.getElementById('dice4').textContent = d4;
-document.getElementById('dice5').textContent = d5;*/
+document.getElementById('dice5').textContent = d5;
