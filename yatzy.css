@@ -17,3 +17,7 @@
 .dice5, .d5Status {
     display: inline-block;
 }
+
+.score, .scoreValue {
+    display: inline-block;
+}

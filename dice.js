@@ -11,27 +11,27 @@ function rand(){
 function rollDices(){
 
 if(d1Status == true){
-    let d1 =rand();
+    d1 =rand();
     document.getElementById('dice1').innerHTML = d1;
 }
 
 if(d2Status == true){
-    let d2 =rand();
+    d2 =rand();
     document.getElementById('dice2').innerHTML = d2;
 }
 
 if(d3Status == true){
-    let d3 =rand();
+    d3 =rand();
     document.getElementById('dice3').innerHTML = d3;
 }
 
 if(d4Status == true){
-    let d4 =rand();
+    d4 =rand();
     document.getElementById('dice4').innerHTML = d4;
 }
 
 if(d5Status == true){
-    let d5 =rand();
+    d5 =rand();
     document.getElementById('dice5').innerHTML = d5;
 }
 }
@@ -40,6 +40,7 @@ if(d5Status == true){
 function RollDiceActivate(){
     let diceRoll = document.getElementById('diceRoll');
     diceRoll.addEventListener('click',rollDices);
+    diceRoll.addEventListener('click',scoreCalculate);
 }
 
 function RollDiceDeactivate(){
@@ -84,51 +85,51 @@ function diceStatusDeActivate(){
 
 function d1StatusSet(){
     if (d1Status == true){
-        let d1Status = false;
+        d1Status = false;
         document.getElementById('d1Status').innerHTML = "Saving";
     }else{
         document.getElementById('d1Status').innerHTML = "Rolling";
-        let d1Status = true;
+        d1Status = true;
     }
 }
 
 function d2StatusSet(){
     if (d2Status == true){
-        let d2Status = false;
+        d2Status = false;
         document.getElementById('d2Status').innerHTML = "Saving";
     }else{
         document.getElementById('d2Status').innerHTML = "Rolling";
-        let d2Status = true;
+        d2Status = true;
     }
 }
 
 function d3StatusSet(){
     if (d3Status == true){
-        let d3Status = false;
+        d3Status = false;
         document.getElementById('d3Status').innerHTML = "Saving";
     }else{
         document.getElementById('d3Status').innerHTML = "Rolling";
-        let d3Status = true;
+        d3Status = true;
     }
 }
 
 function d4StatusSet(){
     if (d4Status == true){
-        let d4Status = false;
+        d4Status = false;
         document.getElementById('d4Status').innerHTML = "Saving";
     }else{
         document.getElementById('d4Status').innerHTML = "Rolling";
-        let d4Status = true;
+        d4Status = true;
     }
 }
 
 function d5StatusSet(){
     if (d5Status == true){
-        let d5Status = false;
+        d5Status = false;
         document.getElementById('d5Status').innerHTML = "Saving";
     }else{
         document.getElementById('d5Status').innerHTML = "Rolling";
-        let d5Status = true;
+        d5Status = true;
     }
 }
 
@@ -138,14 +139,10 @@ function d5StatusSet(){
 
 //Main
 
-let d1Status = true;
-let d2Status = true;
-let d3Status = true;
-let d4Status = true;
-let d5Status = true;
 
 
-RollDiceActivate();
-diceStatusActivate();
+
+//RollDiceActivate();
+//diceStatusActivate();
 
 
