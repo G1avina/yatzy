@@ -7,6 +7,7 @@
     <script src="dice.js" defer></script>
     <script src="yatzy_game.js" defer></script>
     <script src="yatzy_engine.js" defer></script>
+    <link rel="stylesheet" href="yatzy.css">
 
 <title>yatzy</title>
 
@@ -17,237 +18,25 @@
     <div id ="game"></div>
     <br><br>
     Dices
-    <div id ="dice1">0</div>
-    <div id ="dice2">0</div>
-    <div id ="dice3">0</div>
-    <div id ="dice4">0</div>
-    <div id ="dice5">0</div>
+    <br>
+    <!--Dice 1-->
+    <div class ="dice1" id ="dice1">0</div>  <div class = "d1Status"><button id="d1Status">Rolling</button></div>
+    <br>
+    <!--Dice 2-->
+    <div  class ="dice2" id ="dice2">0</div> <div class = "d2Status"><button id="d2Status">Rolling</button></div>
+    <br>
+    <!--Dice 3-->
+    <div  class ="dice3" id ="dice3">0</div> <div class = "d3Status"><button id="d3Status">Rolling</button></div>
+    <br>
+    <!--Dice 4-->
+    <div class ="dice4" id ="dice4">0</div> <div class = "d4Status"><button id="d4Status">Rolling</button></div>
+    <br>
+    <!--Dice 5-->
+    <div  class ="dice5" id ="dice5">0</div> <div class = "d5Status"><button id="d5Status">Rolling</button></div>
 
 
-    <script>
-       /* // Your JavaScript code goes here
-        let pacPos = 0;
-        let ghost =5;
-        const max_x = 5;
-        const  min_x = -5;
-        let fruit = 0;
-        let score = 0;
+   <div id = "diceRoll"> <button id="diceRoll">Roll Dices!</button></div>
 
-
-
-        function rand(){
-            return Math.floor(Math.random() * (max_x+1 - min_x) + min_x);
-        }
-
-        function fruitPos(){
-            while(fruit == pacPos)
-            {fruit = rand();}
-            return;
-        }
-
-        function check(){
-            if (ghost > max_x){
-                ghost = min_x;
-            }else if(ghost <min_x){
-                ghost = max_x;
-            }
-
-        }
-        let stage = 0;
-        let current =0;
-        function ghostPos(){
-            let x = 4;
-            let y = 1
-            let randomValue = Math.floor(Math.random() * (x - y + 1)) + y;
-            switch(current){
-                case 0:
-                    current = randomValue;
-                    break;
-                case 1:
-                    switch(stage){
-                        case 5:
-                            ghost += 1;
-                            check();
-                            stage = 0;
-                            current = 0;
-                            break;
-                        default:
-                            ghost += 1;
-                            check();
-                            stage +=1
-                            break;
-                           
-                    }
-                    break;
-
-                case 2:
-                    switch(stage){
-                        case 5:
-                            ghost -= 1;
-                            check();
-                            stage = 0;
-                            current = 0;
-                            break;
-                        default:
-                            ghost -= 1;
-                            check();
-                            stage +=1
-                            break;
-                    }
-                break;
-                
-                case 3:
-                    switch(stage){
-                        case 0:
-                            ghost += 1;
-                            check();
-                            stage +=1
-                            break;
-
-                        case 1:
-                            ghost -= 1;
-                            check();
-                            stage +=1
-                            break;
-
-                        case 2:
-                            ghost -= 1;
-                            check();
-                            stage +=1
-                            break;
-                    
-                        case 5:
-                            ghost += 1;
-                            check();
-                            stage = 0;
-                            current = 0;
-                            break;
-                        default:
-                            ghost += 1;
-                            check();
-                            stage +=1
-                            break;
-                    }
-                    
-                    break;
-
-                    case 4:
-                    switch(stage){
-                        case 0:
-                            ghost -= 1;
-                            check();
-                            stage +=1
-                            break;
-
-                        case 1:
-                            ghost += 1;
-                            check();
-                            stage +=1
-                            break;
-
-                        case 2:
-                            ghost += 1;
-                            check();
-                            stage +=1
-                            break;
-                    
-                        case 5:
-                            ghost -= 1;
-                            check();
-                            stage = 0;
-                            current = 0;
-                            break;
-                        default:
-                            ghost -= 1;
-                            check();
-                            stage +=1
-                            break;
-                    }
-                    
-                    break;
-                
-            }
-
-
-                
-
-            drawBoard();
-        }
-        
-        
-
-
-        function drawBoard() {
-            //if pacman collide is on fruit 
-            if(pacPos == fruit){
-                score += 5
-                document.getElementById('score').textContent = score;
-                console.log(score);
-                fruitPos();
-            }
-
-            if(pacPos ==ghost){
-                score -= 5
-                document.getElementById('score').textContent = score;
-                console.log(score);
-            }
-
-            let s = ""
-            //document.getElementById('game').textContent = '';
-            for (let i = -5; i <= 5; i++){
-                if (i == pacPos){
-                    s= s+"x";
-                }else if(i == fruit){
-                    s = s+"@";
-                }else if(i == ghost){
-                    s = s+"c";
-                }else{
-                s = s + ".";
-                }
-            }
-            document.getElementById('game').textContent = s;
-            return;
-        }
-
-        function move(event) {
-
-            if (event.key == 'ArrowRight'){
-                if (pacPos == max_x){
-                    pacPos = min_x;
-                }else{
-                    pacPos += 1;
-                }
-                
-            } else if (event.key == 'ArrowLeft'){
-                if (pacPos == min_x){
-                    pacPos = max_x;
-                }else{
-                    pacPos -= 1;
-                }
-               
-            }
-            console.log(pacPos);
-            //console.log(rand());
-            drawBoard();
-            //document.addEventListener('keydown', move);
-            
-
-        }
-    
-        // Add event listener for keydown events
-        fruitPos();
-        drawBoard();
-
-       document.addEventListener('keydown', move);
-        var intervalId = window.setInterval(function(){
-            ghostPos()}, 350);
-        
-    */
-
-
-            
-
-    </script>
 
 
 </body>

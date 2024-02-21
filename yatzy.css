@@ -1,0 +1,19 @@
+.dice1, .d1Status {
+    display: inline-block;
+}
+
+.dice2, .d2Status {
+    display: inline-block;
+}
+
+.dice3, .d3Status {
+    display: inline-block;
+}
+
+.dice4, .d4Status {
+    display: inline-block;
+}
+
+.dice5, .d5Status {
+    display: inline-block;
+}
