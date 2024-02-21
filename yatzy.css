@@ -21,3 +21,8 @@
 .score, .scoreValue {
     display: inline-block;
 }
+
+.diceBoard, .scoreBoard {
+    display: inline-block;
+    width: 200px;
+}
