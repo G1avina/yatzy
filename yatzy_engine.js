@@ -176,6 +176,39 @@ function scoreCalculate(){
 
     document.getElementById('fullHouse').innerHTML = "Full house: " + fullHouse;
 
+    //small straight
+    smallStraight = 0;
+    let temp = 0;
+    const temp2 = [one,two,three,four,five,six];
+    for(i =0; i<6;i++){
+        if(temp2[i]>=1){
+            temp = temp + 1;
+        }else{
+            temp = 0;
+        }
+        if(temp == 4){
+            smallStraight =30;
+            break;
+        }
+    }
+
+    document.getElementById('smallStraight').innerHTML = "Small straight: " + smallStraight;
+
+
+
+
+
+
+    //long straight
+    largeStraight = 0;
+    if (one ==1 && two ==1 && three == 1 && four ==1 && five ==1){
+        largeStraight=40;
+    }else if(two ==1 && three == 1 && four ==1 && five ==1 && six == 1){
+        largeStraight=40;
+    }
+
+    document.getElementById('largeStraight').innerHTML = "Large straight: " + largeStraight;
+
 
 
 
@@ -184,11 +217,14 @@ function scoreCalculate(){
     chance = d1+d2+d3+d4+d5;
     document.getElementById('chance').innerHTML = "Chance: " + chance;
 
+    //calculate yatzy
 
+    yatzy = 0;
+    if(one ==5 ||  two == 5 ||three == 5 || four ==5 || five ==5 || six == 5){
+        yatzy = 50;
+    }
 
-
-
-
+    document.getElementById('yatzy').innerHTML = "yatzy: " + yatzy;
     
 
 }
