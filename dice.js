@@ -34,6 +34,8 @@ if(d5Status == true){
     d5 =rand();
     document.getElementById('dice5').innerHTML = d5;
 }
+
+
 }
 
 //Activates the Roll Dice button
@@ -51,6 +53,11 @@ function RollDiceDeactivate(){
 //Activate Status for button (If they are rolled or not)
 function diceStatusActivate(){
     let diceRoll1 = document.getElementById('d1Status');
+    //generic
+    /*
+    document.getElementById('d1Status').addEventListener('click',function(){
+    diceStatusSet(d1Status,'d1Status');
+    });*/
     diceRoll1.addEventListener('click',d1StatusSet);
 
     let diceRoll2 = document.getElementById('d2Status');
@@ -82,6 +89,20 @@ function diceStatusDeActivate(){
     let diceRoll5 = document.getElementById('d5Status');
     diceRoll5.removeEventListener('click',d5StatusSet);
 }
+
+
+//Dice Status
+/*
+function diceStatusSet(dStatus,dID){
+    if (dStatus == true){
+        dStatus = false;
+        document.getElementById(dID).innerHTML = "Saving";
+    }else{
+        document.getElementById(dID).innerHTML = "Rolling";
+        dStatus = true;
+    }
+
+}*/
 
 function d1StatusSet(){
     if (d1Status == true){
