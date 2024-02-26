@@ -104,6 +104,24 @@ function diceStatusSet(dStatus,dID){
 
 }*/
 
+function resetDiceStatus(){
+    d1Status = true;
+    document.getElementById('d1Status').innerHTML = "Rolling";
+
+    d2Status = true;
+    document.getElementById('d2Status').innerHTML = "Rolling";
+
+    d3Status = true;
+    document.getElementById('d3Status').innerHTML = "Rolling";
+
+    d4Status = true;
+    document.getElementById('d4Status').innerHTML = "Rolling";
+
+    d5Status = true;
+    document.getElementById('d5Status').innerHTML = "Rolling";
+
+}
+
 function d1StatusSet(){
     if (d1Status == true){
         d1Status = false;

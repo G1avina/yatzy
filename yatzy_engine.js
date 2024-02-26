@@ -73,21 +73,21 @@ function scoreCalculate(){
 
     //Calculate One pair
     if(SonePair.value == 0){
-        if(six == 2){
-            onePair = 6 * six;
-        }else if(five == 2){
-            onePair = 5 * five;
+        if(six >= 2){
+            onePair = 6 * 2;
+        }else if(five >= 2){
+            onePair = 5 * 2;
         }
-        else if(four == 2){
-            onePair = 4 * four;
+        else if(four >= 2){
+            onePair = 4 * 2;
         }
-        else if(three == 2){
-            onePair = 3 * three;
+        else if(three >= 2){
+            onePair = 3 * 2;
         }
-        else if(two == 2){
-            onePair = 2 * two;
-        }else if(one == 2){
-            onePair = 1 * one;
+        else if(two >= 2){
+            onePair = 2 * 2;
+        }else if(one >= 2){
+            onePair = 1 * 2;
         }else{
             onePair = 0;
         }
@@ -102,28 +102,28 @@ function scoreCalculate(){
         twoPair = 0;
         let numOfPair = 0;
 
-        if(six == 2){
-            twoPair = twoPair + 6 * six;
+        if(six >= 2){
+            twoPair = twoPair + 6 * 2;
             numOfPair++;
         }
-        if(five == 2){
-            twoPair = twoPair + 5 * five;
+        if(five >= 2){
+            twoPair = twoPair + 5 * 2;
             numOfPair++;
         }
-        if(four == 2){
-            twoPair = twoPair + 4 * four;
+        if(four >= 2){
+            twoPair = twoPair + 4 * 2;
             numOfPair++;
         }
-        if(three == 2){
-            twoPair = twoPair +3 * three;
+        if(three >= 2){
+            twoPair = twoPair +3 * 2;
             numOfPair++;
         }
-        if(two == 2){
-            twoPair = twoPair +2 * two;
+        if(two >= 2){
+            twoPair = twoPair +2 * 2;
             numOfPair++;
         }
-        if(one == 2){
-            twoPair = twoPair + 1 * one;
+        if(one >= 2){
+            twoPair = twoPair + 1 * 2;
             numOfPair++;
 
         }
@@ -141,23 +141,23 @@ function scoreCalculate(){
     if(SthreeOfKind.value == 0){
         threeOfKind = 0;
 
-        if(six == 3){
-            threeOfKind = 6 * six;
+        if(six >= 3){
+            threeOfKind = 6 * 3;
         }
-        if(five == 3){
-            threeOfKind =  5 * five;
+        if(five >= 3){
+            threeOfKind =  5 * 3;
         }
-        if(four == 3){
-            threeOfKind =  4 * four;
+        if(four >= 3){
+            threeOfKind =  4 * 3;
         }
-        if(three == 3){
-            threeOfKind = 3 * three;
+        if(three >= 3){
+            threeOfKind = 3 * 3;
         }
-        if(two == 3){
-            threeOfKind = 2 * two;
+        if(two >= 3){
+            threeOfKind = 2 * 3;
         }
-        if(one == 3){
-            threeOfKind =  1 * one;
+        if(one >= 3){
+            threeOfKind =  1 * 3;
         }
 
         document.getElementById('threeOfKind').innerHTML = "Three of a kind: " + threeOfKind;
@@ -167,23 +167,23 @@ function scoreCalculate(){
     if(SfourOfKind.value == 0){
         fourOfKind = 0;
 
-        if(six == 4){
-            fourOfKind = 6 * six;
+        if(six >= 4){
+            fourOfKind = 6 * 4;
         }
-        if(five == 4){
-            fourOfKind =  5 * five;
+        if(five >= 4){
+            fourOfKind =  5 * 4;
         }
-        if(four == 4){
-            fourOfKind =  4 * four;
+        if(four >= 4){
+            fourOfKind =  4 * 4;
         }
-        if(three == 4){
-            fourOfKind = 3 * three;
+        if(three >= 4){
+            fourOfKind = 3 * 4;
         }
-        if(two == 4){
-            fourOfKind = 2 * two;
+        if(two >= 4){
+            fourOfKind = 2 * 4;
         }
-        if(one == 4){
-            fourOfKind =  1 * one;
+        if(one >= 4){
+            fourOfKind =  1 * 4;
         }
 
         document.getElementById('fourOfKind').innerHTML = "Four of a kind: " + fourOfKind;
@@ -191,7 +191,7 @@ function scoreCalculate(){
 
     //calculate full house
     if(SfullHouse.value == 0){
-        let fonePair =o;
+        let fonePair =0;
         if(six == 2){
             fonePair = 6 * six;
         }else if(five == 2){
@@ -236,6 +236,8 @@ function scoreCalculate(){
         }
 
         document.getElementById('fullHouse').innerHTML = "Full house: " + fullHouse;
+
+        
     }
 
     //small straight
@@ -254,9 +256,10 @@ function scoreCalculate(){
                 break;
             }
         }
-    }
+    
 
-    document.getElementById('smallStraight').innerHTML = "Small straight: " + smallStraight;
+        document.getElementById('smallStraight').innerHTML = "Small straight: " + smallStraight;
+    }
 
 
 
@@ -286,7 +289,7 @@ function scoreCalculate(){
 
     //calculate yatzy
 
-    if(Syatz.value == 0){
+    if(Syatzy.value == 0){
         yatzy = 0;
         if(one ==5 ||  two == 5 ||three == 5 || four ==5 || five ==5 || six == 5){
             yatzy = 50;
@@ -299,81 +302,109 @@ function scoreCalculate(){
 }
 
 //FUNCTION Deactivate select score
-function deactivateScore(idName){
-    document.getElementById(idName).removeEventListener('click',clickHandler);
+function deactivateScore(idName,fun){
+    document.getElementById(idName).removeEventListener('click',fun);
+}
+
+
+function deactivateAllScore(){
+    deactivateScore('ones',scoreDictionary.ones);
+    deactivateScore('twos',scoreDictionary.twos);
+    deactivateScore('threes',scoreDictionary.threes);
+    deactivateScore('fours',scoreDictionary.fours);
+    deactivateScore('fives',scoreDictionary.fives);
+    deactivateScore('sixes',scoreDictionary.sixes);
+    deactivateScore('onePair',scoreDictionary.onePair);
+    deactivateScore('twoPair',scoreDictionary.twoPair);
+    deactivateScore('threeOfKind',scoreDictionary.threeOfKind);
+    deactivateScore('fourOfKind',scoreDictionary.fourOfKind);
+    deactivateScore('smallStraight',scoreDictionary.smallStraight);
+    deactivateScore('largeStraight',scoreDictionary.largeStraight);
+    deactivateScore('fullHouse',scoreDictionary.fullHouse);
+    deactivateScore('chance',scoreDictionary.chance);
+    deactivateScore('yatzy',scoreDictionary.yatzy);
+
 }
 
 //
+let scoreDictionary = {key1: "test"};
 function activateAllScore(){
     if(Sones.value == 0){
-        selectScore('ones',ones,Sones);
+        scoreDictionary.ones = selectScore('ones',ones,Sones);
     }
 
     if(Stwos.value == 0){
-        selectScore('twos',twos,Stwos);
+        scoreDictionary.twos = selectScore('twos',twos,Stwos);
     }
 
     if(Sthrees.value == 0){
-        selectScore('threes',threes,Sthrees);
+        scoreDictionary.threes = selectScore('threes',threes,Sthrees);
     }
 
     if(Sfours.value == 0){
-        selectScore('fours',fours,Sfours);
+        scoreDictionary.fours = selectScore('fours',fours,Sfours);
     }
 
     if(Sfives.value == 0){
-        selectScore('fives',fives,Sfives);
+        scoreDictionary.fives = selectScore('fives',fives,Sfives);
     }
 
     if(Ssixes.value == 0){
-        selectScore('sixes',sixes,Ssixes);
+        scoreDictionary.sixes = selectScore('sixes',sixes,Ssixes);
     }
 
     if(SonePair.value == 0){
-        selectScore('onePair',onePair,SonePair);
+        scoreDictionary.onePair = selectScore('onePair',onePair,SonePair);
     }
 
     if(StwoPair.value == 0){
-        selectScore('twoPair',twoPair,StwoPair);
+        scoreDictionary.twoPair = selectScore('twoPair',twoPair,StwoPair);
     }
 
     if(SthreeOfKind.value == 0){
-        selectScore('threeOfKind',threeOfKind,SthreeOfKind);
+        scoreDictionary.threeOfKind = selectScore('threeOfKind',threeOfKind,SthreeOfKind);
     }
 
     if(SfourOfKind.value == 0){
-        selectScore('fourOfKind',fourOfKind,SfourOfKind);
+        scoreDictionary.fourOfKind = selectScore('fourOfKind',fourOfKind,SfourOfKind);
     }
 
     if(SsmallStraight.value == 0){
-        selectScore('smallStraight',smallStraight,SsmallStraight);
+        scoreDictionary.smallStraight = selectScore('smallStraight',smallStraight,SsmallStraight);
     }
 
     if(SlargeStraight.value == 0){
-        selectScore('largeStraight',largeStraight,SlargeStraight);
+        scoreDictionary.largeStraight = selectScore('largeStraight',largeStraight,SlargeStraight);
     }
 
     if(SfullHouse.value == 0){
-        selectScore('fullHouse',fullHouse,SfullHouse);
+        scoreDictionary.fullHouse = selectScore('fullHouse',fullHouse,SfullHouse);
     }
 
     if(Schance.value == 0){
-        selectScore('chance',chance,Schance);
+        scoreDictionary.chance = selectScore('chance',chance,Schance);
     }
 
     if(Syatzy.value == 0){
-        selectScore('yatzy',yatzy,Syatzy);
+        scoreDictionary.yatzy = selectScore('yatzy',yatzy,Syatzy);
     }
 
 }
 
 //Slecting a score
+
+//selectOnes = function() {
+  //  handleClick('ones', ones,Sones);
+//};
+
+
 function selectScore(idName,scoreCat,scoreStatus){
 
         clickHandler = function() {
         handleClick(idName, scoreCat,scoreStatus);
     };
     document.getElementById(idName).addEventListener('click',clickHandler);
+    return clickHandler;
 }
 
 function handleClick(idName,scoreCat,scoreStatus){
@@ -381,5 +412,6 @@ function handleClick(idName,scoreCat,scoreStatus){
     total = total + scoreCat;
     scoreStatus.value = 1;
     document.getElementById('total').innerHTML = "TOTAL SCORE: " + total;
-    deactivateOnesScore(idName);  
+    resetState();
+    //deactivateOnesScore(idName);  
 }

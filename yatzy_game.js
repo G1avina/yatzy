@@ -69,51 +69,84 @@ let gameState =1;
 function advanceGameState(stage){
     gameState +=1;
     if (gameState == 4){
-        stage3();
+        gamesState =1;
+        state3();
+        return;
     }
 
-    
-    if (stage == 2){
+    if(gameState == 2){
         state2();
     }
 
-    if (stage == 1){
-        state1();
-    }
+    
+    //if (stage == 2){
+    //    state2();
+    //}
 
+   // if (stage == 1){
+    //    state1();
+   // }
+
+}
+
+let advance = function(){
+    advanceGameState(2);
+}
+
+function state0(){
+    document.getElementById('state').innerHTML = "<h3>State 0<h3>";
+    RollDiceActivate();
+    //diceStatusActivate();
+    //deactivateAllScore();
+    //diceStatusActivate();
+    //activateAllScore()
+    document.getElementById('diceRoll').addEventListener('click',advance);
 }
 
 function state1(){
     document.getElementById('state').innerHTML = "<h3>State 1<h3>";
     RollDiceActivate();
+    deactivateAllScore();
+    diceStatusDeActivate();
     //diceStatusActivate();
     //activateAllScore()
-    advance = function(){
-        advanceGameState(2);
-    }
+    document.getElementById('diceRoll').removeEventListener('click',advance);
     document.getElementById('diceRoll').addEventListener('click',advance);
-    
 }
 
 function state2(){
-    document.getElementById('diceRoll').removeEventListener('click',advance);
+    //document.getElementById('diceRoll').removeEventListener('click',advance);
     document.getElementById('state').innerHTML = "<h3>State 2<h3>";
     diceStatusActivate();
-    activateAllScore()
-    document.getElementById('diceRoll').addEventListener('click',advanceGameState);
-    gameState =1;
+    activateAllScore();
+    RollDiceActivate();
+    //document.getElementById('diceRoll').addEventListener('click',advanceGameState);
     //RollDiceDeactivate();
 }
 
 function state3(){
-    document.getElementById('state').innerHTML = "<h3>State 2<h3>";
-    diceStatusActivate();
-    activateAllScore()
+    document.getElementById('state').innerHTML = "<h3>State 3<h3>";
+    diceStatusDeActivate();
+    //activateAllScore();
     RollDiceDeactivate();
+    document.getElementById('diceRoll').removeEventListener('click',advance);
+}
+
+function resetState(){
+    diceStatusDeActivate();
+    resetDiceStatus();
+    gameState =1;
+    console.log(d1Status);
+    console.log(d2Status);
+    console.log(d3Status);
+    console.log(d4Status);
+    console.log(d5Status);
+    
+    state1();
 }
 
 
-state1();
+state0();
 
 
 
