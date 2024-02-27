@@ -132,16 +132,24 @@ function state3(){
     document.getElementById('diceRoll').removeEventListener('click',advance);
 }
 
+function state4(){
+    calcTotal();
+    document.getElementById('state').innerHTML = "<h3>State 4 congrats your score is <h3>"+total+"<br>Reload the page if you want to play again";
+    diceStatusDeActivate();
+    deactivateAllScore();
+    RollDiceDeactivate();
+
+}
+
+
 function resetState(){
     diceStatusDeActivate();
     resetDiceStatus();
+    if(isGameFinished()){
+        state4();
+        return;
+    }
     gameState =1;
-    console.log(d1Status);
-    console.log(d2Status);
-    console.log(d3Status);
-    console.log(d4Status);
-    console.log(d5Status);
-    
     state1();
 }
 

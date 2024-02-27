@@ -48,6 +48,7 @@ function RollDiceActivate(){
 function RollDiceDeactivate(){
     let diceRoll = document.getElementById('diceRoll');
     diceRoll.removeEventListener('click',rollDices);
+    diceRoll.removeEventListener('click',scoreCalculate);
 }
 
 //Activate Status for button (If they are rolled or not)

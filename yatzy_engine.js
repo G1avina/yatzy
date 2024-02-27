@@ -69,6 +69,18 @@ function scoreCalculate(){
     }
 
 
+   /* if(Sones.value == 1 && Stwos.value == 1 && Sthrees.value == 1 && Sfours.value == 1 && Sfives.value == 1 && Ssixes){
+        sum = ones + twos + threes + fours + fives + sixes;
+        document.getElementById('sum').innerHTML = "sum: "+sum;
+    }
+
+    if(sum >=63){
+
+        bonus = 50;
+        document.getElementById('bonus').innerHTML = "bonus: "+sum;
+    }*/
+
+
     //Lower Section
 
     //Calculate One pair
@@ -300,6 +312,24 @@ function scoreCalculate(){
     
 
 }
+function calcSum(){
+    if(Sones.value == 1 && Stwos.value == 1 && Sthrees.value == 1 && Sfours.value == 1 && Sfives.value == 1 && Ssixes){
+        sum = ones + twos + threes + fours + fives + sixes;
+        document.getElementById('sum').innerHTML = "sum: "+sum;
+    }
+
+    if(sum >=63){
+
+        bonus = 50;
+        document.getElementById('bonus').innerHTML = "bonus: "+bonus;
+    }
+}
+
+function calcTotal(){
+
+    total = sum +bonus + onePair+twoPair+threeOfKind+fourOfKind+fullHouse+smallStraight+largeStraight+chance+yatzy;
+    document.getElementById('total').innerHTML = "TOTAL SCORE: " + total;
+}
 
 //FUNCTION Deactivate select score
 function deactivateScore(idName,fun){
@@ -391,6 +421,28 @@ function activateAllScore(){
 
 }
 
+function isGameFinished(){
+    
+    if(Sones.value == 0){return false;}
+    if(Stwos.value == 0){return false;}
+    if(Sthrees.value == 0){return false;}
+    if(Sfours.value == 0){return false;}
+    if(Sfives.value == 0){return false;}
+    if(Ssixes.value == 0){return false;}
+    if(SonePair.value == 0){return false;}
+    if(StwoPair.value == 0){return false;}
+    if(SthreeOfKind.value == 0){return false;}
+    if(SfourOfKind.value == 0){return false;}
+    if(SsmallStraight.value == 0){return false;}
+    if(SlargeStraight.value == 0){return false;}
+    if(SfullHouse.value == 0){return false;}
+    if(Schance.value == 0){return false;}
+    if(Syatzy.value == 0){return false;}
+    return true;
+    
+
+}
+
 //Slecting a score
 
 //selectOnes = function() {
@@ -409,8 +461,8 @@ function selectScore(idName,scoreCat,scoreStatus){
 
 function handleClick(idName,scoreCat,scoreStatus){
     document.getElementById(idName).style.color = "red";
-    total = total + scoreCat;
     scoreStatus.value = 1;
+    calcSum();
     document.getElementById('total').innerHTML = "TOTAL SCORE: " + total;
     resetState();
     //deactivateOnesScore(idName);  
