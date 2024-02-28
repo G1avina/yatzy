@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <script src="dice.js" defer></script>
+    <script src="yatzy_engine.js" defer></script>
+    <script src="yatzy_game.js" defer></script>
+    
+    <link rel="stylesheet" href="yatzy.css">
+
+<title>yatzy</title>
+
+</head>
+
+
+<body>
+    <div id ="game"></div>
+    <br><br>
+    <div id ="state"><h3>Roll dice 1</h3></div>
+    <br>
+    <div class = "diceBoard">
+    Dices
+    <br>
+    <!--Dice 1-->
+    <div class ="dice1" id ="dice1">0</div>  <div class = "d1Status"><button id="d1Status">Rolling</button></div>
+    <br>
+    <!--Dice 2-->
+    <div  class ="dice2" id ="dice2">0</div> <div class = "d2Status"><button id="d2Status">Rolling</button></div>
+    <br>
+    <!--Dice 3-->
+    <div  class ="dice3" id ="dice3">0</div> <div class = "d3Status"><button id="d3Status">Rolling</button></div>
+    <br>
+    <!--Dice 4-->
+    <div class ="dice4" id ="dice4">0</div> <div class = "d4Status"><button id="d4Status">Rolling</button></div>
+    <br>
+    <!--Dice 5-->
+    <div  class ="dice5" id ="dice5">0</div> <div class = "d5Status"><button id="d5Status">Rolling</button></div>
+
+    <br>
+   <div id = "diceRoll"> <button id="diceRoll">Roll Dices!</button></div>
+
+   <br>
+   <div class ="score">Score:</div>
+   <div  class ="scoreValue" id ="scoreValue">0</div>
+   </div>
+
+    <br>
+   <div class = "scoreBoard">
+    Score Board
+    <br>
+    <br>
+    <div id = "ones" >ones: 0</div>
+    <div id = "twos">twos: 0</div>
+    <div id = "threes">threes: 0</div>
+    <div id = "fours">fours: 0</div>
+    <div id = "fives">fives: 0</div>
+    <div id = "sixes">sixes: 0</div>
+    <div id = "sum">sum: 0</div>
+    <div id = "bonus">bonus: 0</div>
+    <br>
+    <br>
+    <br>
+    <div id = "onePair">One Pair: 0</div>
+    <div id = "twoPair">Two Pair: 0</div>
+    <div id = "threeOfKind">Three of a kind: 0</div>
+    <div id = "fourOfKind">Four of a kind: 0</div>
+    <div id = "fullHouse">Full house: 0</div>
+    <div id = "smallStraight">Small straight: 0</div>
+    <div id = "largeStraight">Long straight: 0</div>
+    <div id = "chance">Chance: 0</div>
+    <div id = "yatzy">Yatzy: 0</div>
+    <br>
+    <div id = "total">TOTAL SCORE: 0</div>
+    </div>
+
+
+
+</body>
+
+
+
+</html>
