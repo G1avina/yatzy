@@ -31,7 +31,7 @@ function scoreCalculate(){
     }
 
     score = d1+d2+d3+d4+d5;
-    document.getElementById('scoreValue').innerHTML = score;
+    //document.getElementById('scoreValue').innerHTML = score;
 
 
     //Upper Section
@@ -463,7 +463,7 @@ function handleClick(idName,scoreCat,scoreStatus){
     document.getElementById(idName).style.color = "red";
     scoreStatus.value = 1;
     calcSum();
-    document.getElementById('total').innerHTML = "TOTAL SCORE: " + total;
+    //document.getElementById('total').innerHTML = "TOTAL SCORE: " + total;
     resetState();
     //deactivateOnesScore(idName);  
 }

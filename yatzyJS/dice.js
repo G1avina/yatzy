@@ -12,27 +12,27 @@ function rollDices(){
 
 if(d1Status == true){
     d1 =rand();
-    document.getElementById('dice1').innerHTML = d1;
+    document.getElementById('dice1').innerHTML = drawDice(d1);
 }
 
 if(d2Status == true){
     d2 =rand();
-    document.getElementById('dice2').innerHTML = d2;
+    document.getElementById('dice2').innerHTML = drawDice(d2);
 }
 
 if(d3Status == true){
     d3 =rand();
-    document.getElementById('dice3').innerHTML = d3;
+    document.getElementById('dice3').innerHTML = drawDice(d3);
 }
 
 if(d4Status == true){
     d4 =rand();
-    document.getElementById('dice4').innerHTML = d4;
+    document.getElementById('dice4').innerHTML = drawDice(d4);
 }
 
 if(d5Status == true){
     d5 =rand();
-    document.getElementById('dice5').innerHTML = d5;
+    document.getElementById('dice5').innerHTML = drawDice(d5);
 }
 
 
@@ -175,7 +175,88 @@ function d5StatusSet(){
 
 
 
+function drawDice(x){
 
+    //return display info of dice 1
+    if(x == 1){
+
+        return `<div class = "gdice" id = "gdice">
+            <svg width="120" height="120">
+            <rect x="0" y="0" width="120" height="120" stroke="black" stroke-width="4" fill = "white" />
+            <circle cx='60' cy="60" r="5" stroke="black" stroke-width="4" fill="black" />
+            </svg>
+        </div>`
+    }
+    //return display info of dice 2
+    if(x == 2){
+
+        return `<div class = "gdice" id = "gdice">
+        <svg width="120" height="120">
+            <rect x="0" y="0" width="120" height="120" stroke="black" stroke-width="4" fill = "white" />
+            <circle cx="30" cy="30" r="5" stroke="black" stroke-width="4" fill="black" />
+            <circle cx="90" cy="90" r="5" stroke="black" stroke-width="4" fill="black" />
+        </svg>
+    </div>`
+    }
+
+    //return display info of dice 3
+    if(x == 3){
+
+        return `<div class = "gdice" id = "gdice">
+        <svg width="120" height="120">
+            <rect x="0" y="0" width="120" height="120" stroke="black" stroke-width="4" fill = "white" />
+            <circle cx="30" cy="30" r="5" stroke="black" stroke-width="4" fill="black" />
+            <circle cx="60" cy="60" r="5" stroke="black" stroke-width="4" fill="black" />
+            <circle cx="90" cy="90" r="5" stroke="black" stroke-width="4" fill="black" />
+        </svg>
+    </div>`
+    }
+
+    //return display info of dice 4
+    if(x == 4){
+
+        return `<div class = "gdice" id = "gdice">
+        <svg width="120" height="120">
+            <rect x="0" y="0" width="120" height="120" stroke="black" stroke-width="4" fill = "white" />
+            <circle cx="30" cy="30" r="5" stroke="black" stroke-width="4" fill="black" />
+            <circle cx="90" cy="30" r="5" stroke="black" stroke-width="4" fill="black" />
+            <circle cx="90" cy="90" r="5" stroke="black" stroke-width="4" fill="black" />
+            <circle cx="30" cy="90" r="5" stroke="black" stroke-width="4" fill="black" />
+        </svg>
+    </div>`
+    }
+
+    //return display info of dice 5
+    if(x == 5){
+
+        return `<div class = "gdice" id = "gdice">
+        <svg width="120" height="120">
+            <rect x="0" y="0" width="120" height="120" stroke="black" stroke-width="4" fill = "white" />
+            <circle cx="30" cy="30" r="5" stroke="black" stroke-width="4" fill="black" />
+            <circle cx="90" cy="30" r="5" stroke="black" stroke-width="4" fill="black" />
+            <circle cx="90" cy="90" r="5" stroke="black" stroke-width="4" fill="black" />
+            <circle cx="30" cy="90" r="5" stroke="black" stroke-width="4" fill="black" />
+            <circle cx="60" cy="60" r="5" stroke="black" stroke-width="4" fill="black" />
+        </svg>
+    </div>`
+    }
+
+    //return display info of dice 6
+    if(x == 6){
+
+        return `<div class = "gdice" id = "gdice">
+        <svg width="120" height="120">
+            <rect x="0" y="0" width="120" height="120" stroke="black" stroke-width="4" fill = "white" />
+            <circle cx="30" cy="30" r="5" stroke="black" stroke-width="4" fill="black" />
+            <circle cx="90" cy="30" r="5" stroke="black" stroke-width="4" fill="black" />
+            <circle cx="90" cy="90" r="5" stroke="black" stroke-width="4" fill="black" />
+            <circle cx="30" cy="90" r="5" stroke="black" stroke-width="4" fill="black" />
+            <circle cx="30" cy="60" r="5" stroke="black" stroke-width="4" fill="black" />
+            <circle cx="90" cy="60" r="5" stroke="black" stroke-width="4" fill="black" />
+        </svg>
+    </div>`
+    }
+}
 
 //Main
 

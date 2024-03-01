@@ -94,7 +94,7 @@ let advance = function(){
 }
 
 function state0(){
-    document.getElementById('state').innerHTML = "<h3>State 0<h3>";
+    document.getElementById('state').innerHTML = "<h3>Roll the dices<h3>";
     RollDiceActivate();
     //diceStatusActivate();
     //deactivateAllScore();
@@ -104,7 +104,7 @@ function state0(){
 }
 
 function state1(){
-    document.getElementById('state').innerHTML = "<h3>State 1<h3>";
+    document.getElementById('state').innerHTML = "<h3>Roll the dices<h3>";
     RollDiceActivate();
     deactivateAllScore();
     diceStatusDeActivate();
@@ -116,7 +116,7 @@ function state1(){
 
 function state2(){
     //document.getElementById('diceRoll').removeEventListener('click',advance);
-    document.getElementById('state').innerHTML = "<h3>State 2<h3>";
+    document.getElementById('state').innerHTML = "<h3>Roll the dices or Pick a score<h3>";
     diceStatusActivate();
     activateAllScore();
     RollDiceActivate();
@@ -125,7 +125,7 @@ function state2(){
 }
 
 function state3(){
-    document.getElementById('state').innerHTML = "<h3>State 3<h3>";
+    document.getElementById('state').innerHTML = "<h3>Pick a score<h3>";
     diceStatusDeActivate();
     //activateAllScore();
     RollDiceDeactivate();
@@ -134,7 +134,7 @@ function state3(){
 
 function state4(){
     calcTotal();
-    document.getElementById('state').innerHTML = "<h3>State 4 congrats your score is <h3>"+total+"<br>Reload the page if you want to play again";
+    document.getElementById('state').innerHTML = "<h3>CONGRATS your score is "+total+"<h3>"+"<br> Reload the page if you want to play again";
     diceStatusDeActivate();
     deactivateAllScore();
     RollDiceDeactivate();
