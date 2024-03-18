@@ -18,7 +18,9 @@ for ($i=1; $i<=5; $i++) {
 
 <head>
 
+<script src="gameImage.js" defer></script>
 <script src="clientGame.js" defer></script>
+
 <link rel="stylesheet" href="yatzy.css">
 
 <title>index</title>
@@ -100,7 +102,7 @@ roll.onclick = function() {
 
 
 
-<br><br><br>
+<br><br><div id = "state1">state: 0</div><br>
 
 
 

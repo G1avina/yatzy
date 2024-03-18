@@ -1,9 +1,11 @@
 <?php
 require_once('_config.php');
 require_once('../app/models/YatzyEngine.php');
+require_once('../app/models/YatzyGame.php');
 
 use yatzy\Dice;
 use yatzy\Engine;
+use yatzy\Game;
 
 switch ($_GET["action"] ?? "version") {
 case "roll":
@@ -13,54 +15,34 @@ case "roll":
   // Decode the JSON data into a PHP array
   $data_array = json_decode($json_data, true);
 
-  //json return data for dices
-  $d = new Dice();
+  $gameImage = new Game($data_array);
+    $gameImage->rollDice();
+    $gameImage->calcScore();
+    $gameImage->calcState("roll");
+    $gameImage->checkEnd();
+    
 
-    if($data_array['d1Set'] == 0){
-      $data["d1Value"] = $d->roll();
-    }else{
-      $data["d1Value"] = $data_array['d1Value'];
-    }
-
-    if($data_array['d2Set'] == 0){
-      $data["d2Value"] = $d->roll();
-    }else{
-      $data["d2Value"] = $data_array['d2Value'];
-    }
-
-    if($data_array['d3Set'] == 0){
-      $data["d3Value"] = $d->roll();
-    }else{
-      $data["d3Value"] = $data_array['d3Value'];
-    }
+    $data = $gameImage->createJson();
 
 
-    if($data_array['d4Set'] == 0){
-      $data["d4Value"] = $d->roll();
-    }else{
-      $data["d4Value"] = $data_array['d4Value'];
-    }
-
-
-    if($data_array['d5Set'] == 0){
-      $data["d5Value"] = $d->roll();
-    }else{
-      $data["d5Value"] = $data_array['d5Value'];
-    }
-
-    $eng = new Engine($data_array['d1Value'], $data_array['d2Value'], $data_array['d3Value'], $data_array['d4Value'], $data_array['d5Value']);
-    $data["ones"] = $eng->ones();
-    $data["twos"] = $eng->twos();
-    $data["threes"] = $eng->threes();
-    $data["fours"] = $eng->fours();
-    $data["fives"] = $eng->fives();
-    $data["sixes"] = $eng->sixes();
-
-    break;
+break;
 
 
 
 case "score":
+  // Get the raw POST data
+  $json_data = file_get_contents('php://input');
+  // Decode the JSON data into a PHP array
+  $data_array = json_decode($json_data, true);
+  $gameImage = new Game($data_array);
+  $gameImage->calcScore();
+  $gameImage->calcState("score");
+  $gameImage->checkEnd();
+  $data = $gameImage->createJson();
+
+
+
+break;
   
   
 

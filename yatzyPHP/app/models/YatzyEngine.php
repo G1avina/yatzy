@@ -1,6 +1,9 @@
 <?php
 
 namespace yatzy;
+require_once('_config.php');
+require_once('../app/models/YatzyGame.php');
+
 class Engine{
 
     public $one = 0;
@@ -13,17 +16,15 @@ class Engine{
     //public $sum;
     //public $score;
 
-        /*const dice = [d1,d2,d3,d4,d5];
-
-        let one =0;
-        let two =0;
-        let three =0;
-        let four =0;
-        let five =0;
-        let six =0;*/
-
-        //analyse dices
+        //constructor that analyse dices
         public function __construct($d1,$d2,$d3,$d4,$d5){
+
+            $this->one = 0;
+            $this->two = 0;
+            $this->three = 0;
+            $this->four = 0;
+            $this->five = 0;
+            $this->six = 0;
 
             $dice = array($d1,$d2,$d3,$d4,$d5);
 
@@ -46,7 +47,38 @@ class Engine{
                 }
             }
         }
-        //document.getElementById('scoreValue').innerHTML = score;*/
+
+        //analyse dices
+        function analyseDice($d1,$d2,$d3,$d4,$d5){
+
+            $this->one = 0;
+            $this->two = 0;
+            $this->three = 0;
+            $this->four = 0;
+            $this->five = 0;
+            $this->six = 0;
+
+            $dice = array($d1,$d2,$d3,$d4,$d5);
+
+            
+            for($x = 0; $x<5; $x++){   
+
+                $i = $dice[$x];
+                if ($i == 1){
+                    $this->one = $this->one +1;
+                }else if($i == 2){
+                    $this->two = $this->two +1;
+                }else if($i == 3){
+                    $this->three = $this->three +1;
+                }else if($i == 4){
+                    $this->four = $this->four +1;
+                }else if($i == 5){
+                    $this->five = $this->five +1;
+                }else if($i == 6){
+                    $this->six = $this->six +1;
+                }
+            }
+        }
 
 
         //Upper Section
@@ -81,208 +113,214 @@ class Engine{
         }
 
 
-    /* if(Sones.value == 1 && Stwos.value == 1 && Sthrees.value == 1 && Sfours.value == 1 && Sfives.value == 1 && Ssixes){
-            sum = ones + twos + threes + fours + fives + sixes;
-            document.getElementById('sum').innerHTML = "sum: "+sum;
-        }
+       function sum($ones,$twos,$threes,$fours,$fives,$sixes){
+            $sumVal = $ones + $twos + $threes + $fours + $fives + $sixes;
+            return $sumVal;
 
-        if(sum >=63){
+       }
 
-            bonus = 50;
-            document.getElementById('bonus').innerHTML = "bonus: "+sum;
+       function bonus($sum){
+            $bonus =0;
+            if($sum >=63){
+                $bonus = 50;
+            }
+            return $bonus;
         }
 
 
         //Lower Section
 
         //Calculate One pair
-        if(SonePair.value == 0){
-            if(six >= 2){
-                onePair = 6 * 2;
-            }else if(five >= 2){
-                onePair = 5 * 2;
+        function onePair(){
+
+
+            if($this->six >= 2){
+                return 6 * 2;
+            }else if($this->five >= 2){
+                return 5 * 2;
             }
-            else if(four >= 2){
-                onePair = 4 * 2;
+            else if($this->four >= 2){
+                return 4 * 2;
             }
-            else if(three >= 2){
-                onePair = 3 * 2;
+            else if($this->three >= 2){
+                return 3 * 2;
             }
-            else if(two >= 2){
-                onePair = 2 * 2;
-            }else if(one >= 2){
-                onePair = 1 * 2;
+            else if($this->two >= 2){
+                return 2 * 2;
+            }else if($this->one >= 2){
+                return 1 * 2;
             }else{
-                onePair = 0;
+                return 0;
             }
-
-            document.getElementById('onePair').innerHTML = "One Pair: " + onePair;
         }
 
-        //Calculate Two pair
+         //Calculate Two pair
 
-        if(StwoPair.value == 0){
+        function twoPair(){
 
-            twoPair = 0;
-            let numOfPair = 0;
+            $pairValue = 0;
+            $numOfPair = 0;
 
-            if(six >= 2){
-                twoPair = twoPair + 6 * 2;
-                numOfPair++;
+            if($this->six >= 2){
+                $pairValue = $pairValue+ 6 * 2;
+                $numOfPair++;
             }
-            if(five >= 2){
-                twoPair = twoPair + 5 * 2;
-                numOfPair++;
+            if($this->five >= 2){
+                $pairValue = $pairValue + 5 * 2;
+                $numOfPair++;
             }
-            if(four >= 2){
-                twoPair = twoPair + 4 * 2;
-                numOfPair++;
+            if($this->four >= 2){
+                $pairValue = $pairValue+ 4 * 2;
+                $numOfPair++;
             }
-            if(three >= 2){
-                twoPair = twoPair +3 * 2;
-                numOfPair++;
+            if($this->three >= 2){
+                $pairValue = $pairValue +3 * 2;
+                $numOfPair++;
             }
-            if(two >= 2){
-                twoPair = twoPair +2 * 2;
-                numOfPair++;
+            if($this->two >= 2){
+                $pairValue = $pairValue +2 * 2;
+                $numOfPair++;
             }
-            if(one >= 2){
-                twoPair = twoPair + 1 * 2;
-                numOfPair++;
-
-            }
-
-            if(numOfPair != 2){
-                twoPair = 0;
+            if($this->one >= 2){
+                $pairValue = $pairValue + 1 * 2;
+                $numOfPair++;
             }
 
+            if($numOfPair != 2){
+                $pairValue = 0;
+            }
 
-
-            document.getElementById('twoPair').innerHTML = "Two Pair: " + twoPair;
+            return $pairValue;
         }
+
+        
 
         //Calculate Three of a kind
-        if(SthreeOfKind.value == 0){
-            threeOfKind = 0;
+       function threeOfKind(){
+            $threeOfKindVal = 0;
 
-            if(six >= 3){
-                threeOfKind = 6 * 3;
+            if($this->six >= 3){
+                $threeOfKindVal = 6 * 3;
             }
-            if(five >= 3){
-                threeOfKind =  5 * 3;
+            if($this->five >= 3){
+                $threeOfKindVal =  5 * 3;
             }
-            if(four >= 3){
-                threeOfKind =  4 * 3;
+            if($this->four >= 3){
+                $threeOfKindVal =  4 * 3;
             }
-            if(three >= 3){
-                threeOfKind = 3 * 3;
+            if($this->three >= 3){
+                $threeOfKindVal = 3 * 3;
             }
-            if(two >= 3){
-                threeOfKind = 2 * 3;
+            if($this->two >= 3){
+                $threeOfKindVal = 2 * 3;
             }
-            if(one >= 3){
-                threeOfKind =  1 * 3;
+            if($this->one >= 3){
+                $threeOfKindVal =  1 * 3;
             }
 
-            document.getElementById('threeOfKind').innerHTML = "Three of a kind: " + threeOfKind;
+            return $threeOfKindVal;
         }
+
+        
 
         //Calculate Four of a kind
-        if(SfourOfKind.value == 0){
-            fourOfKind = 0;
+        function fourOfKind(){
+            $fourOfKindVal = 0;
 
-            if(six >= 4){
-                fourOfKind = 6 * 4;
+            if($this->six >= 4){
+                $fourOfKindVal = 6 * 4;
             }
-            if(five >= 4){
-                fourOfKind =  5 * 4;
+            if($this->five >= 4){
+                $fourOfKindVal =  5 * 4;
             }
-            if(four >= 4){
-                fourOfKind =  4 * 4;
+            if($this->four >= 4){
+                $fourOfKindVal =  4 * 4;
             }
-            if(three >= 4){
-                fourOfKind = 3 * 4;
+            if($this->three >= 4){
+                $fourOfKindVal = 3 * 4;
             }
-            if(two >= 4){
-                fourOfKind = 2 * 4;
+            if($this->two >= 4){
+                $fourOfKindVal = 2 * 4;
             }
-            if(one >= 4){
-                fourOfKind =  1 * 4;
+            if($this->one >= 4){
+                $fourOfKindVal =  1 * 4;
             }
 
-            document.getElementById('fourOfKind').innerHTML = "Four of a kind: " + fourOfKind;
+            return  $fourOfKindVal;
         }
+
+        
 
         //calculate full house
-        if(SfullHouse.value == 0){
-            let fonePair =0;
-            if(six == 2){
-                fonePair = 6 * six;
-            }else if(five == 2){
-                fonePair = 5 * five;
+        function fullHouse(){
+            $fonePair =0;
+            if($this->six == 2){
+                $fonePair = 6 * 2;
+            }else if($this->five == 2){
+                $fonePair = 5 * 2;
             }
-            else if(four == 2){
-                fonePair = 4 * four;
+            else if($this->four == 2){
+                $fonePair = 4 * 2;
             }
-            else if(three == 2){
-                fonePair = 3 * three;
+            else if($this->three == 2){
+                $fonePair = 3 * 2;
             }
-            else if(two == 2){
-                fonePair = 2 * two;
-            }else if(one == 2){
-                fonePair = 1 * one;
+            else if($this->two == 2){
+                $fonePair = 2 * 2;
+            }else if($this->one == 2){
+                $fonePair = 1 * 2;
             }
 
-            let fthreeOfKind = 0;
+            $fthreeOfKind = 0;
         
-            if(six == 3){
-                fthreeOfKind = 6 * six;
+            if($this->six == 3){
+                $fthreeOfKind = 6 * 3;
             }
-            if(five == 3){
-                fthreeOfKind =  5 * five;
+            if($this->five == 3){
+                $fthreeOfKind =  5 * 3;
             }
-            if(four == 3){
-                fthreeOfKind =  4 * four;
+            if($this->four == 3){
+                $fthreeOfKind =  4 * 3;
             }
-            if(three == 3){
-                fthreeOfKind = 3 * three;
+            if($this->three == 3){
+                $fthreeOfKind = 3 * 3;
             }
-            if(two == 3){
-                fthreeOfKind = 2 * two;
+            if($this->two == 3){
+                $fthreeOfKind = 2 * 3;
             }
-            if(one == 3){
-                fthreeOfKind =  1 * one;
-            }
-
-            fullHouse = 0;
-            if (fonePair != 0 && fthreeOfKind !=0){
-                fullHouse = fonePair + fthreeOfKind;
+            if($this->one == 3){
+                $fthreeOfKind =  1 * 3;
             }
 
-            document.getElementById('fullHouse').innerHTML = "Full house: " + fullHouse;
+            $fullHouseVal = 0;
+            if ($fonePair != 0 && $fthreeOfKind !=0){
+                $fullHouseVal = $fonePair + $fthreeOfKind;
+            }
 
-            
+            return  $fullHouseVal;
         }
 
+        
+
         //small straight
-        if(SsmallStraight.value == 0){
-            smallStraight = 0;
-            let temp = 0;
-            const temp2 = [one,two,three,four,five,six];
-            for(i =0; i<6;i++){
-                if(temp2[i]>=1){
-                    temp = temp + 1;
+        function smallStraight(){
+            $smallStraightVal = 0;
+            $temp = 0;
+            $temp2 = array($this->one,$this->two,$this->three,$this->four,$this->five,$this->six);
+            for($i =0; $i<6;$i++){
+                if($temp2[$i]>=1){
+                    $temp = $temp + 1;
                 }else{
-                    temp = 0;
+                    $temp = 0;
                 }
-                if(temp == 4){
-                    smallStraight =30;
+                if($temp == 4){
+                    $smallStraightVal =30;
                     break;
                 }
             }
         
 
-            document.getElementById('smallStraight').innerHTML = "Small straight: " + smallStraight;
+           return $smallStraightVal;
         }
 
 
@@ -291,39 +329,40 @@ class Engine{
 
 
         //long straight
-        if(SlargeStraight.value == 0){
-            largeStraight = 0;
-            if (one ==1 && two ==1 && three == 1 && four ==1 && five ==1){
-                largeStraight=40;
-            }else if(two ==1 && three == 1 && four ==1 && five ==1 && six == 1){
-                largeStraight=40;
+        function largeStraight(){
+            $largeStraightVal = 0;
+            if ($this->one ==1 && $this->two ==1 && $this->three == 1 && $this->four ==1 && $this->five ==1){
+                $largeStraightVal=40;
+            }else if($this->two ==1 && $this->three == 1 && $this->four ==1 && $this->five ==1 && $this->six == 1){
+                $largeStraightVal=40;
             }
 
-            document.getElementById('largeStraight').innerHTML = "Large straight: " + largeStraight;
+            return $largeStraightVal;
         }
 
 
 
-
+        
         //calculate chance 
-        if(Schance.value == 0){
-            chance = d1+d2+d3+d4+d5;
-            document.getElementById('chance').innerHTML = "Chance: " + chance;
+        function chance(){
+            $chanceVal = $this->one * 1 + $this->two * 2 + $this->three * 3 + $this->four * 4 + $this->five * 5 + $this->six * 6;
+            return $chanceVal;
         }
+
+        
 
         //calculate yatzy
 
-        if(Syatzy.value == 0){
-            yatzy = 0;
-            if(one ==5 ||  two == 5 ||three == 5 || four ==5 || five ==5 || six == 5){
-                yatzy = 50;
+        function yatzy(){
+            $yatzyVal = 0;
+            if($this->one ==5 ||  $this->two == 5 ||$this->three == 5 || $this->four ==5 || $this->five ==5 || $this->six == 5){
+                $yatzyVal = 50;
             }
 
-            document.getElementById('yatzy').innerHTML = "yatzy: " + yatzy;
+            return $yatzyVal;
         }
         
 
-    }*/
 
     //takes in a game object created in yatzyGame.php
     function calcSum($game){
