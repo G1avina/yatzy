@@ -56,6 +56,32 @@ function clickScore(idName) {
     xmlhttp.setRequestHeader('Content-Type', 'application/json');
     xmlhttp.send(JSON.stringify(jsonData));
 }
+//leaderboard post
+
+function leaderboardPost() {
+
+    //json data for roll
+    let jsonData = {
+        //player info 
+        playerName: game.playerName,
+        total: game.total,
+    };
+
+    const xmlhttp = new XMLHttpRequest();
+  
+    xmlhttp.onreadystatechange = function() {
+      if (xmlhttp.readyState == XMLHttpRequest.DONE) {
+        if (xmlhttp.status == 200) {
+            console.log(xmlhttp.responseText);
+
+        }
+      }
+    };
+
+    xmlhttp.open("POST", "/api.php?action=leaderboard", true);
+    xmlhttp.setRequestHeader('Content-Type', 'application/json');
+    xmlhttp.send(JSON.stringify(jsonData));
+}
 
 
 //event handlers for dice sets-----------------------------------------------------------
@@ -347,6 +373,10 @@ function state5(){
     diceStatusDeActivate();
     deactivateAllScore();
     diceRollDeActivate();
+    leaderboardPost();
+
+
+
 }
 
 function executeState(currentState){
@@ -378,7 +408,8 @@ function executeState(currentState){
 
 
 //----------------------------------Things that are executed when game starts---------------------------
-var game = new Game("player");
+var userName = prompt("Please enter your name:");
+var game = new Game(userName);
 state0();
 
 

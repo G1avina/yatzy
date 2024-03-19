@@ -1,16 +1,6 @@
 <?php
 require_once('_config.php');
 
-use yatzy\Dice;
-
-$d = new Dice();
-
-
-
-for ($i=1; $i<=5; $i++) {
-  echo "ROLL {$i}: {$d->roll()}<br>";
-}
-
 ?>
 <!DOCTYPE html>
 
@@ -32,76 +22,6 @@ for ($i=1; $i<=5; $i++) {
 
 
 <body>
-
-   Index.php<br><br>
-
-<br><br><br>
-<div id="output">--</div>
-<button id="version">Version</button>
-
-<script>
-const output = document.getElementById("output");
-const version = document.getElementById("version");
-version.onclick = function(e) {
-  const xmlhttp = new XMLHttpRequest();
-
-  xmlhttp.onreadystatechange = function() {
-    if (xmlhttp.readyState == XMLHttpRequest.DONE) {
-      if (xmlhttp.status == 200) {
-        output.innerHTML = xmlhttp.responseText;
-      }
-    }
-  };
-  xmlhttp.open("GET", "/api.php", true);
-  xmlhttp.send();
-}
-</script>
-
-<br><br><br>
-
-<div class= "diceBoard">
-    <div class = "die" id="die1">dice 1: 0</div>
-    <div class = "die" id="die2"> dice 2: 0</div>
-    <div class = "die" id="die3">dice 3: 0</div>
-    <div class = "die" id="die4">dice 4: 0</div>
-    <div class = "die" id="die5">dice 5: 0</div>
-</div>
-<button id="roll">Roll</button>
-
-<script>
-
-//Script for the roll button
-const die1 = document.getElementById("die1");
-const die2 = document.getElementById("die2");
-const die3 = document.getElementById("die3");
-const die4 = document.getElementById("die4");
-const die5 = document.getElementById("die5");
-const roll = document.getElementById("roll");
-roll.onclick = function() {
-
-  const xmlhttp = new XMLHttpRequest();
-
-  xmlhttp.onreadystatechange = function() {
-    if (xmlhttp.readyState == XMLHttpRequest.DONE) {
-      if (xmlhttp.status == 200) {
-        var jsonResponse = JSON.parse(xmlhttp.responseText);
-        die1.innerHTML = "dice 1: " + jsonResponse.value1;
-        die2.innerHTML = "dice 2: " + jsonResponse.value2;
-        die3.innerHTML = "dice 3: " + jsonResponse.value3;
-        die4.innerHTML = "dice 4: " + jsonResponse.value4;
-        die5.innerHTML = "dice 5: " + jsonResponse.value5;
-
-      }
-    }
-  };
-  xmlhttp.open("GET", "/api.php?action=roll", true);
-  xmlhttp.send();
-}
-
-</script>
-
-
-
 <br><br><div id = "state1">state: 0</div><br>
 
 
@@ -111,7 +31,7 @@ roll.onclick = function() {
         <div class = "gameTitle"><h1>YATZY</h1> </div>
         
         
-        <div class = "rules"> <h4> &rarr; <a href = "https://en.wikipedia.org/wiki/Yatzy">The rules</a></h4></div>
+        <div class = "rules"> <h4> &rarr; <a href = "https://en.wikipedia.org/wiki/Yatzy">The rules</a></h4> <h4> &rarr; <a href = "./leaderboard.php">Leaderboard</a></h4></div>
     </div>
         <br><br>
     <div class ="state" id ="state"><h3>Roll dice 1</h3></div>
